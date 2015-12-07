@@ -6,6 +6,10 @@ permalink: /about/
 
 ![My photo]({{ site.baseurl }}/img/myphoto.jpg)
 
+```
+<img src="./img/myphoto.jpg" width = "300" height = "200" alt="个人图片" align=center />
+```
+
 Hi there! My name is Zong Chang. I grew up in a beautiful city in northern China. Then I got my engineering academic background in a wonderful univerisity(HIT). After four years of colurful life, I went to the United Kingdom and got my master degree in the University of Edinburgh, in data science and natural language processing. I really enjoyed the life in Edinburgh, so I decided to stay here and work for a local start-up company as a data analyst. I went back to China in Nov. 2015 for family reasons, and I'm working in a large company in HangZhou as a developer.
 
 What's my job about? Basically, I am a data story teller. Provide me some data, structured or unstructured, relational databases or No-SQL JSON, with the latest backend and frontend technical skills, I turn it into interactive and pretty Web applications, and try to make the visualization reusable, customer oriented and information compact. Sometimes I wish to become a craftsman, and the data I have is the rock and wood in my hand, even though they have ugly appearance, with my cuttiing, polishing, and decoration, I will present the most beautiful side of them to my customers.
