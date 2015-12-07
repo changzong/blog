@@ -6,7 +6,7 @@ permalink: /about/
 
 ![My photo]({{ site.baseurl }}/img/myphoto.jpg)
 
-<img src="./img.myphoto.png" width = "300" height = "200" alt="图片名称" align=center />
+<img src="{{ site.baseurl }}/img.myphoto.png" width = "300" height = "200" alt="图片名称" align=center />
 
 Hi there! My name is Zong Chang. I grew up in a beautiful city in northern China. Then I got my engineering academic background in a wonderful univerisity(HIT). After four years of colurful life, I went to the United Kingdom and got my master degree in the University of Edinburgh, in data science and natural language processing. I really enjoyed the life in Edinburgh, so I decided to stay here and work for a local start-up company as a data analyst. I went back to China in Nov. 2015 for family reasons, and I'm working in a large company in HangZhou as a developer.
 
