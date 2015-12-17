@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "跨设备Web应用开发的框架选择"
-date:   2015-12-16 14:21:00
+title:  "在IngelliJ IDE中配置Java Spring Web项目（备忘）"
+date:   2015-12-17 15:12:00
 categories: jekyll update
 ---
 刚刚接触Java和Spring框架，为了和同事们接轨我也是拼了，IDE配置和整个架构简直比Python的同类技术复杂多了，又是写xml又是导入依赖包的，甚是烦人。刚刚成功配置出了一个简易Spring项目，特此写篇博客记录下来以免之后忘记了重蹈覆辙。网上的论坛博客什么的虽然相关的内容很多，但是要么是复制粘贴别人的文章，要么是根本没有逻辑性，也不具有普适性。最后还是在一次次查找StackOverFlow中成功完成的。
