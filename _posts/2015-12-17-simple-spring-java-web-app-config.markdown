@@ -4,9 +4,13 @@ title:  "在IngelliJ IDE中配置Java Spring Web项目（备忘）"
 date:   2015-12-17 15:12:00
 categories: jekyll update
 ---
+
 刚刚接触Java和Spring框架，为了和同事们接轨我也是拼了，IDE配置和整个架构简直比Python的同类技术复杂多了，又是写xml又是导入依赖包的，甚是烦人。刚刚成功配置出了一个简易Spring项目，特此写篇博客记录下来以免之后忘记了重蹈覆辙。网上的论坛博客什么的虽然相关的内容很多，但是要么是复制粘贴别人的文章，要么是根本没有逻辑性，也不具有普适性。最后还是在一次次查找StackOverFlow中成功完成的。
+
 ***
+
 需要的工具：
+
 * Intellij idea IDE
 * Tomcat
 * Maven
@@ -16,6 +20,7 @@ categories: jekyll update
 在Linux或OsX下，修改~/.bash_profile文件在里面添加JAVA_HOME，CATALINA_HOME，和MAVEN_HOME同时对PATH做相应修改。Windows下直接编辑环境变量就好（废话不多说）
 
 2. 下载安装好Intellij IDE建立Maven项目
+
 * 选择新建项目，左边选中Maven，右边选择JDK地址和maven的webapp，选下一步
 ![mavenproj](http://7xoylk.com1.z0.glb.clouddn.com/1.png)
 
@@ -29,6 +34,7 @@ categories: jekyll update
 之后进入到IDE项目界面，这时需要等待IDE下载相关的基本依赖包来完成项目的建立（基本来自maven），要等待一会儿，你会发现左边的文件结构中多出了src，target等文件夹
 
 3. 配置web应用
+
 * File->Project Structure->Project Settings->Modules 右侧上面选中Sources，在src->main下面新建java文件夹，并点击上面的Mark as: Sources设为java源文件夹。
 ![modulesource](http://7xoylk.com1.z0.glb.clouddn.com/4.png)
 
@@ -49,7 +55,9 @@ categories: jekyll update
 至此，如果你在src->main->webapp目录下有一个index.jsp文件，就应该可以直接run运行了。（注意，运行之前要先确保Tomcat服务器是关闭的，否则会因为端口被占用而出现错误，我觉得这一点很不智能。）
 
 4. 配置Spring项目
+
 之前的配置都是为了基本的Web应用，如果要使用Spring Web框架的话需要进一步配置
+
 * 修改pom.xml文件，主要是添加里面的依赖包。我的pom.xml文件如下：
 
 {% highlight XML %}
