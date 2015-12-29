@@ -55,7 +55,7 @@ hadoop的环境变量要添加进PATH中
 
 添加地址映射，之前需要chmod修改文件权限
 
-* 次修改之后在pyspark中执行spark程序时会出现could not open socket错误
+* 之后在pyspark中执行spark程序时会出现could not open socket错误
 
 这个错误的原因有很多，网上针对spark的解答只有将java版本调低，但是最新的spark版本已经可以支持java8了。
 
