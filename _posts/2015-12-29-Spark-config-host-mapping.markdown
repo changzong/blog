@@ -24,17 +24,21 @@ categories: jekyll update
 然后重新格式化和启动：
 
 > $ bin/hdfs namenode -format
+
 > $ sbin/start-dfs.sh
 
 * 创建hdfs路径的时候一定要用 /user :
 
 > $ bin/hdfs dfs -mkdir /user
+
 > $ bin/hdfs dfs -mkdir /user/changPC
 
 * Spark的配置要在conf/spark-env.sh中添加下面三条：
 
 > export HADOOP_HOME=/usr/local/hadoop-2.7.1
+
 > export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+
 > export SPARK_DIST_CLASSPATH=$(hadoop classpath)
 
 hadoop的环境变量要添加进PATH中
