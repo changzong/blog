@@ -57,6 +57,10 @@ hadoop的环境变量要添加进PATH中
 
 * 次修改之后在pyspark中执行spark程序时会出现could not open socket错误
 
+这个错误的原因有很多，网上针对spark的解答只有将java版本调低，但是最新的spark版本已经可以支持java8了。
+
+我对错误来源的spark代码研究了一番，肯定是地址和端口无法通过socket打开，而端口每次都是变化的，可见是spark随机分配的worker端口，所以将目标锁定在了host地址。联想到了之前对/etc/hosts文件的修改，于是做出以下决定。
+
 需要在spark源代码中做修改，在spark/python/pyspark/rdd.py中修改_load_from_socket函数中
 
 > localhost
