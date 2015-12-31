@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "使用JSONP跨域名请求数据的理解"
+date:   2015-12-31 13:18:00
+categories: jekyll update
+---
+
+当需要从远程服务器或者域名不同的服务器上获取JSON数据的时候，经常会遇到浏览器禁止访问的提示，这时需要使用跨域名访问方式来获取数据。JSONP就是这样一种方法。
+
+JSONP(JSON with Paddings)是一种以JavaScript函数形式进行包裹的数据结构。
+
+函数名为前端JS提供的callback参数提供的值，服务器端接收到前端发送的请求后将JSON数据字符化并嵌入到callback的值为名字的函数体中返回。Java的org.json包包含了JSONPObject类用来将JSON转换为JSONP。servlet同样可以实现，即将JSON字符串与callback函数名拼接起来即可。
+
+使用Spring框架和JSONPObject对象的一个例子函数：
+
+{% highlight Java %}
+@RequestMapping(value = "/table-data", params = {"page", "callback"}, produces = "application/json;charset=UTF-8")
+@ResponseBody
+public JSONPObject tableData(@RequestParam("page") Integer page, @RequestParam("callback") String callback, ModelMap model) {
+    int step = 40;
+    MySQLConnector fetch = new MySQLConnector();
+    JSONArray rows = new JSONArray(fetch.getTableManager(fetch.connectDB()).get(1).toString());
+    //JSONConnector fetch = new JSONConnector();
+    //JSONArray rows = new JSONArray(fetch.readTableJSON("/Users/changPC/Desktop/WorkFlow.json").get(1).toString());
+
+    JSONArray rows_to_load = new JSONArray();
+    for (int i=page*step; i<rows.length(); i++) {
+        if (i == (page+1)*step) {
+            break;
+        }
+        else {
+            rows_to_load.put(rows.get(i));
+        }
+    }
+    return new JSONPObject(callback, rows_to_load.toString());
+}
+{% endhighlight %}
+
+或者使用servlet直接拼接：
+
+{% highlight Java %}
+String  callback = this.getRequest().getParameter("callback");               
+String jsoncallback = callback + "({'result':"+result+"})";   
+PrintWriter out =  this.getResponse().getWriter();  
+out.print(jsoncallback);
+{% endhighlight %}
+
+
+这样当你通过URL访问时比如 http://xx.xx.xx.xxx:xxxx 会得到一个JavaScript数据结构。
+
+在前端JS代码中，则需要通过AJAX或者AngularJS提供的$http.jsonp()发送请求，域名格式为 http://xx.xx.xx.xxx:xxxx?callback=? 如果用Angular，callback的值必须为JSON_CALLBACK。这样的URL请求出来的数据就是callback回调函数中的JSON数据了。
+
+一个JavaScript AngularJS例子：
+
+{% highlight JavaScript %}
+$http.jsonp('http://10.7.13.108:8080/reportDataService/bigScreencs/selectGoodsourceLatest?callback=JSON_CALLBACK')
+	.success(function(data, status, headers, config) {
+		$scope.raw_data0 = data;
+	})
+	.error(function(data, status, headers, config) {
+		console.log(data);
+	});
+{% endhighlight %}
+
+一个使用Ajax的例子：
+
+{% highlight JavaScript %} 
+$.ajax({  
+        url:"http://crossdomain.com/services.php",  
+        dataType:'jsonp',  
+        data:'',  
+        jsonp:'callback',  
+        success:function(result) {  
+            console.log(result); 
+           	}  
+        },  
+        timeout:3000  
+    });
+{% endhighlight %}
+
+或者用JQuery
+
+{% highlight JavaScript %}   
+$.getJSON("http://localhost:8080/Jsonp/jsonp.jsp?callback=?", function(json){      
+    alert(json);     
+});     
+{% endhighlight %}
+
+其实，他们在做的都是在最外层的JS中添加外部javascript代码，相当于：
+
+{% highlight HTML %} 
+<script type="text/javascript"src="http://localhost:8080/Jsonp/jsonp.jsp?callback=jsonpCallback"></script> 
+{% endhighlight %}
+
+钦此。
