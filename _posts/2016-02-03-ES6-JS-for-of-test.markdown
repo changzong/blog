@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Angular中timeout的cancel函数失效问题"
-date:   2016-01-20 09:20:00
+title:  "JavaScriptES6新特性之循环"
+date:   2016-02-03 08:58:00
 categories: jekyll update
 ---
 
