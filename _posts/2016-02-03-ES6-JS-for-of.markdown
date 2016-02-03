@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JavaScript ES6新特性for-of循环与原for-in循环的比较"
+title:  "JavaScriptES6新特性for-of循环与原for-in循环的比较"
 date:   2016-02-03 08:58:00
 categories: jekyll update
 ---
