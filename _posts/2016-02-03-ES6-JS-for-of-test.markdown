@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "JavaScriptES6新特性之循环"
-date:   2016-02-03 09:20:00
+date:   2016-02-10 09:20:00
 categories: jekyll update
 ---
 
