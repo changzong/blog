@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "JavaScriptES6新特性for-of循环与原for-in循环的比较"
-date:   2016-02-03 08:58:00
+title:  "JavaScriptES6新特性之循环"
+date:   2016-01-20 08:58:00
 categories: jekyll update
 ---
 
@@ -46,4 +46,3 @@ for (var i of array) {
 ![ES6FOROF](http://7xoylk.com1.z0.glb.clouddn.com/Screen%20Shot%202016-02-03%20at%2009.13.11.png)
 
 可见，for-in循环是对每个元素属性的操作，在数组中返回的就是每个元素的坐标，在对象中返回的是每个元素的key。for-of直接返回每个元素的值。
-
