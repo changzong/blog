@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "用AngularJS加Bootstrap分页做table"
-date:   2016-01-31 16:06:00
+date:   2016-02-01 16:06:00
 categories: jekyll update
 ---
 
