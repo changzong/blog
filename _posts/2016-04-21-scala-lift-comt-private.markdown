@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "对Scala web开发框架Lift中Comet长连接的重新设计"
-date:   2016-04-21 14:47:00
+date:   2016-02-21 14:47:00
 categories: jekyll update
 ---
 
