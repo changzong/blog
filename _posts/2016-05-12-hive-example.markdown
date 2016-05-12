@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hive学习及有用查询语句整理"
-date:   2016-05-12 18:34:00
+date:   2016-03-12 18:34:00
 categories: jekyll update
 ---
 
