@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "Hive学习及有用查询语句整理"
-date:   2016-03-12 18:34:00
+title: "Hive学习及有用查询语句整理"
+date: 2016-05-12 08:34:00
 categories: jekyll update
 ---
-
 ### 感受
 
 通过一段时间的Hive学习，认为它的功能还是比较强大的。Hive可以满足比较复杂的HDFS取数工作，从而避免了使用其他编程语言如Python或Scala通过Spark接口读取HDFS数据在进行转换。Hive底层是转化为MapReduce程序来处理文件数据。同时提一下Hive的一个可视化平台Hue，在上面可以很方便地写查询语句并保存下来或者写成作业流让查询定期自动运行，此外，Hue还支持除了Hive以外的多种大数据处理作业，如Spark程序和Sqoop导出数据。此外，Hive拥有比较强大的集合操作，能够解决MySQL不能胜任的一些复杂运算。
