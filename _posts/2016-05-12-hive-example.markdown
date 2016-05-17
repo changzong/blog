@@ -94,3 +94,8 @@ select dboutput('jdbc:mysql://xx.xx.xx.xx:3306/db','username','password',
 from logs.my_hive_table where date>=date_add(current_date, -1) and date<current_date 
 ```
 
+* 给表添加属性防止错误json格式影响
+
+```
+ALTER TABLE logs.my_table SET SERDEPROPERTIES ( "ignore.malformed.json" = "true");
+```
