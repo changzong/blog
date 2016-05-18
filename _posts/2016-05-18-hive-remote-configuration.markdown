@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hive远程数据库命令行执行配置"
-date: 2016-05-11 14:28:00
+date: 2016-05-18 14:28:00
 categories: jekyll update
 ---
 ### 目的
