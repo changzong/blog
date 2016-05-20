@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Kafka失效引发的Flume Agent堵塞使数据丢失的处理"
-date:   2016-05-18 19:19:00
+date:   2016-05-20 19:19:00
 categories: jekyll update
 ---
 之前配置的大数据流架构中的一种线路是这样的：
