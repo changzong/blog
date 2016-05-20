@@ -9,7 +9,9 @@ categories: jekyll update
 ```
 log server -> Kafka -> Flume -> HDFS 
 ```
+
 同时
+
 ```
 log server -> Kafka -> Flume -> Kafka(测试) -> Spark code -> Kafka(测试) -> LogStash -> ES
 ```
