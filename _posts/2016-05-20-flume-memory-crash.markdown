@@ -6,6 +6,7 @@ categories: jekyll update
 ---
 之前配置的大数据流架构中的一种线路是这样的：
 
+
 ```
 log server -> Kafka -> Flume -> HDFS 
 ```
