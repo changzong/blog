@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "大数据计算存储与实时计算技术架构"
-date:   2016-05-20 09:16:00
+date:   2016-05-16 09:16:00
 categories: jekyll update
 ---
 做了一段时间的大数据开发，写了不少Spark程序和Hive查询，以及Kafka数据获取，现在来总结一下这段时间来的工作。
