@@ -99,3 +99,25 @@ from logs.my_hive_table where date>=date_add(current_date, -1) and date<current_
 ```
 ALTER TABLE logs.my_table SET SERDEPROPERTIES ( "ignore.malformed.json" = "true");
 ```
+
+* Hive的优化
+一条Hive查询如下：
+
+```
+select date, "成交" as event, data['partyid'] as partyid, data['extra_uuid'] as uuid, data['goodssourceid'] as goodssourceid 
+from logs.trade where data['__url'] = '/trade/tradecs/driverPreDeal' and date >= current_date
+union all
+select date, "成交" as event, data['partyid'] as partyid, data['extra_uuid'] as uuid, data['goodssourceid'] as goodssourceid 
+from logs.trade where data['__url'] = '/trade/tradecs/ownerPreDeal' and date >= current_date
+```
+
+可优化为：
+
+```
+select date, "成交" as event, data['partyid'] as partyid, data['extra_uuid'] as uuid, data['goodssourceid'] as goodssourceid 
+from logs.trade where
+pt=current_date and
+array_contains(array('/trade/tradecs/driverPreDeal20160428','/trade/tradecs/ownerPreDeal'), data['__url']);
+```
+
+解释：尽量在创建hive表的时候使用partitioned by参数来分区，之后查询使用分区字段来代替限制条件，避免全表扫描。尽量不要使用union all或or来做结果联合，使用hive函数array_contains来提高效率，减少扫描表的次数。
