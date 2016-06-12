@@ -121,3 +121,28 @@ array_contains(array('/trade/tradecs/driverPreDeal20160428','/trade/tradecs/owne
 ```
 
 解释：尽量在创建hive表的时候使用partitioned by参数来分区，之后查询使用分区字段来代替限制条件，避免全表扫描。尽量不要使用union all或or来做结果联合，使用hive函数array_contains来提高效率，减少扫描表的次数。
+建立带分区的表可以：
+
+```
+CREATE EXTERNAL TABLE `trade`(
+ `type` string COMMENT 'from deserializer', 
+ `date` timestamp COMMENT 'from deserializer', 
+ `key` string COMMENT 'from deserializer', 
+ `data` map<string,string> COMMENT 'from deserializer')
+ PARTITIONED BY ( 
+ `pt` string)
+ ROW FORMAT SERDE 
+ 'org.openx.data.jsonserde.JsonSerDe' 
+ WITH SERDEPROPERTIES ( 
+ 'ignore.malformed.json'='true') 
+ LOCATION 
+ 'hdfs://nameservice1/user/flume/trade'
+```
+
+然后需要手动添加每一个分区（写成Oozie作业每天执行）：
+
+```
+alter table log_trade add partition(pt='2016-06-04') location '2016-06-04'
+```
+
+其中location代表分区所对应的日志目录文件名。
